@@ -16,7 +16,7 @@ let currentModalItem = null;
 // Load Real-Time Chart from Backend
 async function updatePieChart() {
   try {
-    const res = await fetch("http://localhost:5000/api/items/chart-data");
+    const res = await fetch("https://ahtpl-erp.onrender.com/api/items/chart-data");
     const chartData = await res.json();
     const ctx = document.getElementById("inventoryPieChart");
 
@@ -49,7 +49,7 @@ async function updatePieChart() {
 // NEW: Load Stock Flow Chart
 async function updateStockFlowChart() {
   try {
-    const res = await fetch("http://localhost:5000/api/manufacturing-items/stock-flow-data");
+    const res = await fetch("https://ahtpl-erp.onrender.com/api/manufacturing-items/stock-flow-data");
     const chartData = await res.json();
     const ctx = document.getElementById("stockFlowChart");
 
@@ -147,7 +147,7 @@ purchaseForm.addEventListener("submit", async function (e) {
 
   // Rest of the function stays the same...
   try {
-    const res = await fetch('http://localhost:5000/api/purchases', {
+    const res = await fetch('https://ahtpl-erp.onrender.com/api/purchases', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(purchaseData)
@@ -183,7 +183,7 @@ issueToWipForm.addEventListener("submit", async function (e) {
   };
 
   try {
-    const res = await fetch('http://localhost:5000/api/issue-to-wip', {
+    const res = await fetch('https://ahtpl-erp.onrender.com/api/issue-to-wip', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(issueData)
@@ -221,7 +221,7 @@ function showIssueToWipSection() {
 // NEW: Load Products with Ready Stock for Issue
 async function loadProductsForIssue() {
   try {
-    const res = await fetch('http://localhost:5000/api/manufacturing-items/ready-stock');
+    const res = await fetch('https://ahtpl-erp.onrender.com/api/manufacturing-items/ready-stock');
     const items = await res.json();
     
     const select = document.getElementById("issueProduct");
@@ -258,7 +258,7 @@ async function loadProductsForIssue() {
 // FIXED: Load Issue History
 async function loadIssueHistory() {
   try {
-    const res = await fetch('http://localhost:5000/api/issue-to-wip');
+    const res = await fetch('https://ahtpl-erp.onrender.com/api/issue-to-wip');
     
     if (!res.ok) {
       throw new Error(`HTTP error! status: ${res.status}`);
@@ -317,7 +317,7 @@ async function loadIssueHistory() {
 // FIXED: Load Purchase History
 async function loadPurchaseHistory() {
   try {
-    const res = await fetch('http://localhost:5000/api/purchases');
+    const res = await fetch('https://ahtpl-erp.onrender.com/api/purchases');
     
     if (!res.ok) {
       throw new Error(`HTTP error! status: ${res.status}`);
@@ -395,7 +395,7 @@ async function loadDispatchDetails() {
     let dispatchData = [];
     
     try {
-      const res = await fetch('http://localhost:5000/api/dispatch-details');
+      const res = await fetch('https://ahtpl-erp.onrender.com/api/dispatch-details');
       if (res.ok) {
         const responseData = await res.json();
         if (Array.isArray(responseData)) {
@@ -450,7 +450,7 @@ async function loadDispatchDetails() {
 async function createMockDispatchData() {
   try {
     // Get actual manufacturing items to create realistic mock data
-    const res = await fetch('http://localhost:5000/api/manufacturing-items');
+    const res = await fetch('https://ahtpl-erp.onrender.com/api/manufacturing-items');
     const manufacturingItems = await res.json();
     
     const mockData = [];
@@ -566,7 +566,7 @@ async function viewItemDispatchDetails(itemId) {
 // NEW: Load Manufacturing Items - Updated with new button
 async function loadManufacturingItems() {
   try {
-    const res = await fetch('http://localhost:5000/api/manufacturing-items');
+    const res = await fetch('https://ahtpl-erp.onrender.com/api/manufacturing-items');
     const items = await res.json();
     allManufacturingItems = items;
 
@@ -671,7 +671,7 @@ async function quickDispatch(itemId) {
 // NEW: Perform Move Operations
 async function performMoveOperation(itemIds, operation, quantity) {
   try {
-    const res = await fetch('http://localhost:5000/api/manufacturing-items/move', {
+    const res = await fetch('https://ahtpl-erp.onrender.com/api/manufacturing-items/move', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -697,7 +697,7 @@ async function performMoveOperation(itemIds, operation, quantity) {
 // NEW: Perform Dispatch Operation
 async function performDispatchOperation(itemIds, dispatchData) {
   try {
-    const res = await fetch('http://localhost:5000/api/manufacturing-items/dispatch', {
+    const res = await fetch('https://ahtpl-erp.onrender.com/api/manufacturing-items/dispatch', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -927,7 +927,7 @@ form.addEventListener("submit", async function (e) {
   };
 
   try {
-    const res = await fetch('http://localhost:5000/api/items', {
+    const res = await fetch('https://ahtpl-erp.onrender.com/api/items', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(item)
@@ -962,7 +962,7 @@ function getStatusBadge(quantity) {
 async function editItem(id) {
   try {
     // Fetch current item data
-    const res = await fetch(`http://localhost:5000/api/items/${id}`);
+    const res = await fetch(`https://ahtpl-erp.onrender.com/api/items/${id}`);
     if (!res.ok) throw new Error('Failed to fetch item');
     const item = await res.json();
     // Find the row
@@ -1109,7 +1109,7 @@ async function saveEdit(id) {
     }
     
     // Update the item
-    const updateRes = await fetch(`http://localhost:5000/api/items/${id}`, {
+    const updateRes = await fetch(`https://ahtpl-erp.onrender.com/api/items/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -1142,7 +1142,7 @@ async function deleteItem(id) {
     return;
   }
   try {
-    const res = await fetch(`http://localhost:5000/api/items/${id}`, {
+    const res = await fetch(`https://ahtpl-erp.onrender.com/api/items/${id}`, {
       method: 'DELETE'
     });
     
@@ -1164,7 +1164,7 @@ async function deleteItem(id) {
 // Inventory Table + KPI Load - Fixed to show red quantities and correct KPI
 async function loadInventory() {
   try {
-    const res = await fetch('http://localhost:5000/api/items');
+    const res = await fetch('https://ahtpl-erp.onrender.com/api/items');
     const items = await res.json();
     allItems = items; // Store for filtering
 

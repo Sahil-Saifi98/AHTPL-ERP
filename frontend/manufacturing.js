@@ -154,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Fetch functions
   const fetchHaltDurationRecords = () => {
-    fetch('http://localhost:5000/api/production/halt-duration')
+    fetch('https://ahtpl-erp.onrender.com/api/production/halt-duration')
       .then(res => res.json())
       .then(data => {
         if (Array.isArray(data)) {
@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const fetchProductionItems = () => {
-    fetch('http://localhost:5000/api/production')
+    fetch('https://ahtpl-erp.onrender.com/api/production')
       .then(res => res.json())
       .then(data => {
         if (!Array.isArray(data)) return;
@@ -323,7 +323,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const saveHaltDurationRecord = (haltRecord) => {
-    fetch('http://localhost:5000/api/production/halt-duration', {
+    fetch('https://ahtpl-erp.onrender.com/api/production/halt-duration', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -360,7 +360,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const fetchMachineData = () => {
-    fetch('http://localhost:5000/api/machines')
+    fetch('https://ahtpl-erp.onrender.com/api/machines')
       .then(res => res.json())
       .then(data => {
         if (!Array.isArray(data)) {
@@ -1088,7 +1088,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log("📦 Sending to backend:", productionItemsToSend);
 
     // Save to backend
-    fetch('http://localhost:5000/api/production', {
+    fetch('https://ahtpl-erp.onrender.com/api/production', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -1214,7 +1214,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Save status update to backend
-    fetch(`http://localhost:5000/api/production/${item.id}`, {
+    fetch(`https://ahtpl-erp.onrender.com/api/production/${item.id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json'

@@ -32,7 +32,7 @@ new Chart(barCtx, {
 // 🍩 Load Pie Chart Data
 async function loadDashboardChart() {
   try {
-    const res = await fetch("http://localhost:5000/api/items/chart-data");
+    const res = await fetch("https://ahtpl-erp.onrender.com/api/items/chart-data");
     const chartData = await res.json();
 
     Highcharts.chart('pieChart3D', {
@@ -63,7 +63,7 @@ async function loadDashboardChart() {
 // 📈 Update KPIs
 async function updateDashboardKPIs() {
   try {
-    const res = await fetch("http://localhost:5000/api/items");
+    const res = await fetch("https://ahtpl-erp.onrender.com/api/items");
     const items = await res.json();
 
     let totalValue = 0;
