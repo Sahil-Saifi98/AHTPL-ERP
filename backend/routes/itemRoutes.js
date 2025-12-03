@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const Item = require("../models/Item");
+const { getItemModel } = require("../models/getModels");
 
 // Create new item
 router.post("/", async (req, res) => {
@@ -17,6 +17,7 @@ router.post("/", async (req, res) => {
 // Get all items
 router.get("/", async (req, res) => {
   try {
+    const Item = getItemModel(req.dbConnection);
     const items = await Item.find();
     res.json(items);
   } catch (err) {
