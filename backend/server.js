@@ -61,9 +61,9 @@ app.get('/api/health', (req, res) => {
 // ✅ Serve static files from frontend folder
 app.use(express.static(path.join(__dirname, '../frontend')));
 
-// ✅ Root route - serve auth.html
+// ✅ Root route - redirect to login page
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/pages/auth.html'));
+  res.redirect('/pages/auth.html');
 });
 
 // ✅ Start server

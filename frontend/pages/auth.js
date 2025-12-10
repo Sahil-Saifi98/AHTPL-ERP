@@ -65,7 +65,7 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
   
   try {
     // API call to backend
-    const response = await fetch('https://ahtpl-erp.onrender.com/api/auth/login', {
+    const response = await fetch('/api/auth/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -94,7 +94,7 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
       // Show success message
       alert('✅ Login successful! Redirecting to dashboard...');
       
-      // Redirect to dashboard
+      // Redirect to dashboard at root
       window.location.href = '/index.html';
       
     } else {
